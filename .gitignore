@@ -2,3 +2,6 @@
 FlexOffice.Api/obj/
 FlexOffice.Data/obj/
 FlexOffice.Services/obj/
+FlexOffice.Api/bin/
+FlexOffice.Data/bin/
+FlexOffice.Services/bin/
