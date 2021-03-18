@@ -14,7 +14,9 @@ namespace FlexOffice.Services
         public List<Desk> GetDesksByLocation( int locationId);
 
         // UPDATE
+        /*
         public ServiceResponse<Desk> UpdateDesk(int deskId);
+        */
 
         // DELETE
         public ServiceResponse<bool> DeleteDesk(int deskId); 
