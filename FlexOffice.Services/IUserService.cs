@@ -12,9 +12,11 @@ namespace FlexOffice.Services
         public AppUser GetUserById(int id);
         public List<AppUser> GetAllUsers();
 
+        /*
         // UPDATE
         public ServiceResponse<bool> UpdateUser(int userId);
-
+        */
+        
         // DELETE
         public ServiceResponse<bool> DeleteUser(int userId);
 
