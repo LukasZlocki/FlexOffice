@@ -105,7 +105,7 @@ namespace FlexOffice.Services
                 return new ServiceResponse<bool> 
                 {
                     IsSucess = false,
-                    Message = "Reservation not found."
+                    Message = "Reservation not found.",
                     Time = DateTime.UtcNow,
                     Data = false
                 };
@@ -117,7 +117,7 @@ namespace FlexOffice.Services
                 return new ServiceResponse<bool> 
                 {
                     IsSucess = true,
-                    Message = "Reservation deleted."
+                    Message = "Reservation deleted.",
                     Time = DateTime.UtcNow,
                     Data = true
                 };
