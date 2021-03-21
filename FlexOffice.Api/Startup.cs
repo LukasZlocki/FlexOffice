@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FlexOffice.Data;
+using FlexOffice.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,13 +29,18 @@ namespace flexoffice.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            
             services.AddControllers()
             .AddJsonOptions(x => x.JsonSerializerOptions.WriteIndented=true);
             
             services.AddDbContext<OfficeDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<IDeskService, DeskService>();
+            services.AddTransient<ILocationService, LocationService>();
+            services.AddTransient<IReservationService, ReservationService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
