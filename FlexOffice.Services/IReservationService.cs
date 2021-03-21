@@ -13,9 +13,11 @@ namespace FlexOffice.Services
         public Data.Models.Reservation GetReservationById(int reservationId);
         public List<Reservation> GetUserReservationListByUserId(int userId);
 
+        /*
         // UPDATE
         public ServiceResponse<bool> UpdateReservation(int reservationId);
-
+        */
+        
         // DELETE 
         public ServiceResponse<bool> DeleteReservation(int reservationId);
     }
