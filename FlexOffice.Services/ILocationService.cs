@@ -12,9 +12,11 @@ namespace FlexOffice.Services
         public List<Location> GetAllLocations();      
         public Location GetLocationById(int id);
 
+        /*
         // UPDATE
         public ServiceResponse<bool> UpdateLocation (int locationId);
-           
+        */
+
         //DELETE
         public ServiceResponse<bool> DeleteLocation (int locationId);
     }
