@@ -34,10 +34,10 @@ namespace FlexOffice.Api.Controllers
         }
 
         [HttpGet("api/desk/location/{id}")]
-        public ActionResult GetDesksByLocation(int locationId)
+        public ActionResult GetDesksByLocation(int id)
         {
             _logger.LogInformation("Get desks by location.");
-            var desks = _deskService.GetDesksByLocation(locationId);
+            var desks = _deskService.GetDesksByLocation(id);
             return Ok(desks);
         }
         

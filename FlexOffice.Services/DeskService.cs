@@ -101,9 +101,9 @@ namespace FlexOffice.Services
         /// </summary>
         /// <param name="deskId"></param>
         /// <returns>ServiceResponse<bool></returns>
-        public ServiceResponse<bool> DeleteDesk(int deskId)
+        public ServiceResponse<bool> DeleteDesk(int id)
         {
-            var desk = _db.Desks.Find(deskId);
+            var desk = _db.Desks.Find(id);
 
             if(desk == null)
             {
