@@ -62,11 +62,11 @@ namespace FlexOffice.Services
         /// <summary>
         /// Returns Desk object by primary key
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="deskId"></param>
         /// <returns><Desk></returns>
-        public Desk GetDeskById(int id)
+        public Desk GetDeskById(int deskId)
         {
-            var service = _db.Desks.Find(id);
+            var service = _db.Desks.Find(deskId);
             return service;
         }
 
@@ -101,14 +101,14 @@ namespace FlexOffice.Services
         /// </summary>
         /// <param name="deskId"></param>
         /// <returns>ServiceResponse<bool></returns>
-        public ServiceResponse<bool> DeleteDesk(int id)
+        public ServiceResponse<bool> DeleteDesk(int deskId)
         {
-            var desk = _db.Desks.Find(id);
+            var desk = _db.Desks.Find(deskId);
 
             if(desk == null)
             {
                 return new ServiceResponse<bool>
-                {
+                { 
                     IsSucess = false,
                     Message = "No desk found.",
                     Time = DateTime.UtcNow,

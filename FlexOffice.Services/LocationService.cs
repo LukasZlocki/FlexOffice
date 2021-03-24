@@ -65,11 +65,11 @@ namespace FlexOffice.Services
         /// <summary>
         /// Returns location by primary key
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="locationId"></param>
         /// <returns><Location></returns>
-        public Location GetLocationById(int id)
+        public Location GetLocationById(int locationId)
         {
-            var service = _db.Locations.Find(id);
+            var service = _db.Locations.Find(locationId);
             return service;
         }
 

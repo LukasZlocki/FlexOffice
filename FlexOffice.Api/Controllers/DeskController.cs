@@ -51,10 +51,10 @@ namespace FlexOffice.Api.Controllers
         }
 
         [HttpDelete("api/desk/{id}")]
-        public ActionResult DeleteDesk(int deskId)
+        public ActionResult DeleteDesk(int id)
         {
             _logger.LogInformation("Delete desk.");
-            var response = _deskService.DeleteDesk(deskId);
+            var response = _deskService.DeleteDesk(id);
             return Ok(response);
         }
 

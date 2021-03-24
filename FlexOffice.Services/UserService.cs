@@ -62,11 +62,11 @@ namespace FlexOffice.Services
         /// <summary>
         /// Get user by primary key
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="userId"></param>
         /// <returns><AppUser></returns>
-        public AppUser GetUserById(int id)
+        public AppUser GetUserById(int userId)
         {
-            var service = _db.AppUsers.Find(id);
+            var service = _db.AppUsers.Find(userId);
             return service;
         }
 
