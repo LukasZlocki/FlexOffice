@@ -1,6 +1,6 @@
 namespace FlexOffice.Api.Dto
 {
-    public class UserDTO
+    public class UserReadDTO
     {
        public int Id { get; set; } 
        public string UserLog { get; set; }
