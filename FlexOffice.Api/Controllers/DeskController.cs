@@ -1,4 +1,5 @@
-using FlexOffice.Data.Models;
+using FlexOffice.Api.Dto;
+using FlexOffice.Api.Serialization;
 using FlexOffice.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -22,7 +23,8 @@ namespace FlexOffice.Api.Controllers
         {
             _logger.LogInformation("Get all desks.");
             var desks = _deskService.GetAllDesks();
-            return Ok(desks);
+            var desksMapper = DeskMapper.SerializeDesksListToDeskReadDtoModel(desks);
+            return Ok(desksMapper);
         }
 
         [HttpGet("api/desk/{id}")]
@@ -30,7 +32,8 @@ namespace FlexOffice.Api.Controllers
         {
             _logger.LogInformation("Get desk by id.");
             var desk = _deskService.GetDeskById(id);
-            return Ok(desk);
+            var deskMapper = DeskMapper.SerializeDeskModelToDtoModel(desk);
+            return Ok(deskMapper);
         }
 
         [HttpGet("api/desk/location/{id}")]
@@ -38,15 +41,17 @@ namespace FlexOffice.Api.Controllers
         {
             _logger.LogInformation("Get desks by location.");
             var desks = _deskService.GetDesksByLocation(id);
-            return Ok(desks);
+            var desksMapper = DeskMapper.SerializeDesksListToDeskReadDtoModel(desks);
+            return Ok(desksMapper);
         }
         
         // ToDo : Zastosowac Dto
         [HttpPost("api/desk")]
-        public ActionResult CreateDesk([FromBody] Desk desk)
+        public ActionResult CreateDesk([FromBody] DeskCreateDTO desk)
         {
             _logger.LogInformation("Create desk.");
-            var response = _deskService.AddDesk(desk);
+            var deskMapper = DeskMapper.SerializeDeskCreateDtoModel(desk);
+            var response = _deskService.AddDesk(deskMapper);
             return Ok(response);
         }
 
