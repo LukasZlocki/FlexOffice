@@ -1,6 +1,6 @@
 namespace FlexOffice.Api.Dto
 {
-    public class LocationDTO
+    public class LocationReadDTO
     {
         public int Id { get; set; }
         public string Country { get; set; }

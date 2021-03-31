@@ -1,4 +1,5 @@
-using FlexOffice.Data.Models;
+using FlexOffice.Api.Dto;
+using FlexOffice.Api.Serialization;
 using FlexOffice.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -21,20 +22,23 @@ namespace FlexOffice.Api.Controllers
         {
             _logger.LogInformation("Get all location");
             var service = _locationService.GetAllLocations();
-            return Ok(service);
+            var locationsMapper = LocationMapper.SerializeListLocationToDTO(service);
+            return Ok(locationsMapper);
         }
 
         [HttpGet("api/location/{id}")]
         public ActionResult GetLocation(int id)
         {
             var service = _locationService.GetLocationById(id);
-            return Ok(service);
+            var locationMapper = LocationMapper.SerializeToLocationDTO(service);
+            return Ok(locationMapper);
         }
 
         // ToDo : code serialization DTO
         [HttpPost("api/location")]
-        public ActionResult CreateLocation ([FromBody] Location location)
+        public ActionResult CreateLocation ([FromBody] LocationCreateDTO locationDTO )
         {
+            var location = LocationMapper.SerializeCreateLocation(locationDTO);
             var resonse = _locationService.CreateLocation(location);
             return Ok(resonse);
         }
