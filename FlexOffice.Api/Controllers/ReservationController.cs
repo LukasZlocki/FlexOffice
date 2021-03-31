@@ -1,4 +1,5 @@
-using FlexOffice.Data.Models;
+using FlexOffice.Api.Dto;
+using FlexOffice.Api.Serialization;
 using FlexOffice.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -21,7 +22,8 @@ namespace FlexOffice.Api.Controllers
         {
             _logger.LogInformation("Get all reservations.");
             var service = _reservationService.GetAllReservations();
-            return Ok(service);
+            var reservationsMapper = ReservationMapper.SerializeReservationsToDTO(service);
+            return Ok(reservationsMapper);
         }
 
         [HttpGet("api/reservation/{id}")]
@@ -29,7 +31,8 @@ namespace FlexOffice.Api.Controllers
         {
             _logger.LogInformation("Get reservation.");
             var service = _reservationService.GetReservationById(id);
-            return Ok(service);
+            var reservationMapper = ReservationMapper.SerializeReservationToDTO(service);
+            return Ok(reservationMapper);
         }
 
         [HttpDelete("api/reservation/{id}")]
@@ -42,12 +45,14 @@ namespace FlexOffice.Api.Controllers
 
         // ToDo : Add TDO or/and serialization
         [HttpPost("api/reservation")]
-        public ActionResult CreateReservation([FromBody] Reservation reservation)
+        public ActionResult CreateReservation([FromBody] ReservationCreateDTO reservation)
         {
             _logger.LogInformation("Create reservation.");
-            var response = _reservationService.CreateReservation(reservation);
+            var reservationMapper = ReservationMapper.SerializeCreateReservation(reservation);
+            var response = _reservationService.CreateReservation(reservationMapper);
             return Ok(response);
         }
+
 
     }
 }
