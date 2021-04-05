@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FlexOffice.Data;
 using FlexOffice.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlexOffice.Services
 {
@@ -55,7 +56,10 @@ namespace FlexOffice.Services
         /// <returns>List<Reservation></returns>
         public List<Reservation> GetAllReservations()
         {
-            var service = _db.Reservations.ToList();
+            var service = _db.Reservations
+                .Include(d => d.Desk)
+                    .Include(u => u.AppUser)
+                        .ToList();
             return service;
         }
 

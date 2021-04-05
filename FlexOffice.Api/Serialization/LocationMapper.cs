@@ -11,6 +11,16 @@ namespace FlexOffice.Api.Serialization
 
         public static LocationReadDTO SerializeToLocationDTO(Location location)
         {
+            var desksList = location.Desks
+                .Select(i => new DeskReadDTO
+                    {
+                        Id = i.Id,
+                        DeskNumber = i.DeskNumber,
+                        IsFree = i.IsFree,
+                        ShortDeskDescription = i.ShortDeskDescription,
+                        LocationId = i.LocationId
+                    }).ToList();
+
             return new LocationReadDTO
             {
                 Id = location.Id,
@@ -19,7 +29,8 @@ namespace FlexOffice.Api.Serialization
                 OfficeName = location.OfficeName,
                 OfficeNumber = location.OfficeNumber,
                 ShortLocationDescription = location.ShortLocationDescription,
-                UrlPhoto = location.UrlPhoto
+                UrlPhoto = location.UrlPhoto,
+                Desks = desksList
             };
         }
         

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace FlexOffice.Api.Dto
 {
     public class LocationReadDTO
@@ -9,5 +11,7 @@ namespace FlexOffice.Api.Dto
         public string OfficeNumber { get; set; }
         public string ShortLocationDescription { get; set; }
         public string UrlPhoto { get; set; }
+
+        public List<DeskReadDTO> Desks {get; set;}
     }
 }

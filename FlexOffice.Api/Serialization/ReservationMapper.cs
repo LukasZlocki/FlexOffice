@@ -15,7 +15,7 @@ namespace FlexOffice.Api.Serialization
                 Id = reservation.Id,
                 ReservedDay = reservation.ReservedDay,
                 DeskId = reservation.DeskId,
-                UserId = reservation.UserId
+                UserId = reservation.UserId,
             };
         }
 
@@ -36,7 +36,9 @@ namespace FlexOffice.Api.Serialization
                 Id = reservation.Id,
                 ReservedDay = reservation.ReservedDay,
                 DeskId = reservation.DeskId,
-                UserId = reservation.UserId
+                DeskReadDto = DeskMapper.SerializeDeskModelToDtoModel(reservation.Desk),
+                UserId = reservation.UserId,
+                UserReadDto = UserMapper.SerializeUserModel(reservation.AppUser)
             }).ToList();
         }
 
