@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FlexOffice.Data.Models
@@ -18,5 +19,7 @@ namespace FlexOffice.Data.Models
         public string ShortLocationDescription { get; set; }
         [MaxLength(250)]
         public string UrlPhoto { get; set; }
+
+        public List<Desk> Desks {get; set;}
     }
 }
