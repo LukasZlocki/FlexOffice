@@ -49,6 +49,7 @@ namespace FlexOffice.Api.Serialization
 
         public static List<LocationReadDTO> SerializeListLocationToDTO (IEnumerable<Location> locations)
         {
+
             return locations.Select(location => new LocationReadDTO
             {
                 Id = location.Id,
@@ -57,7 +58,8 @@ namespace FlexOffice.Api.Serialization
                 OfficeName = location.OfficeName,
                 OfficeNumber = location.OfficeNumber,
                 ShortLocationDescription = location.ShortLocationDescription,
-                UrlPhoto = location.UrlPhoto
+                UrlPhoto = location.UrlPhoto,
+                Desks = DeskMapper.SerializeDesksListToDeskReadDtoModel(location.Desks)
             }).ToList();
         }
 
